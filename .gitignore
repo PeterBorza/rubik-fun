@@ -1,0 +1,10 @@
+README.md
+.vscode/settings.json
+app/styles/_animations.scss
+app/styles/_globals.scss
+app/styles/_header.scss
+app/styles/_main.scss
+app/styles/_mixins.scss
+app/styles/_variables.scss
+app/styles/style.scss
+css/style.css.map
