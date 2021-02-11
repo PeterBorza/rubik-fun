@@ -1,78 +1,50 @@
-const main = document.querySelector("main");
+const container = tag('container', 'black');
+const flipper = tag('flipper', 'transparent');
+container.append(flipper);
+
+// ****************************************
+//  each side has 9 blocks
 
 const bgs = [
-	"3E4E50",
-	"FACFAD",
-	"F8BD7F",
-	"F5AC72",
-	"F2AA7E",
-	"D8D4F2",
-	"C4B2BC",
-	"A29587",
-	"846C5B",
+	'3E4E50',
+	'FACFAD',
+	'F8BD7F',
+	'F5AC72',
+	'F2AA7E',
+	'D8D4F2',
+	'C4B2BC',
+	'A29587',
+	'846C5B',
 ];
 
-const tag = (className, bgColor) => {
-	let el = document.createElement("div");
-	el.classList.add(className);
-	el.style.backgroundColor = bgColor;
-	return el;
-};
+const rubik = arr => arr.map(item => tag('rubik-color', `#${item}`));
 
 // ******************************************
-// colored rubik
+//  rubik container each side position in 3D preserve
 
-const container = tag("container", "black");
-const flipper = tag("flipper", "transparent");
-container.append(flipper);
-main.append(container);
-
-const rubik = () => bgs.map((item) => tag("rubik-color", `#${item}`));
-
-// ******************************************
-//  rubik container
-
-const rotZ = (angle) => (`rotateZ(${angle}deg)`);
-const rotX = (angle) => (`rotateX(${angle}deg)`);
-const rotY = (angle) => (`rotateY(${angle}deg)`);
-const diag = (x, y) => (`translate(${x}px, ${y}px)`);
-const z = (distance) =>
-(flipper.style.transform += `translateZ(${distance}px)`);
-const x = (distance) =>
-	(flipper.style.transform += `translateX(${distance}px)`);
-const y = (distance) =>
-	(flipper.style.transform += `translateY(${distance}px)`);
-
-
-const front = "150px";
-// const transformers = [
-// 	`${z('-150px')}`,
-// 	`${x('100%')} ${rotY('270')} ${z('150px')}`,
-// 	`${x('-100%')} ${rotY('90')} ${z('150px')}`,
-// 	`${rotX('90')} ${z('150px')}`,
-// 	` ${rotX('270')} ${z('150px')}`,
-// 	`${z('150px')}`
-// ];
-
+const front = '150px';
+const percent = '100%';
+const degrees = '90';
 
 const transforms = [
 	`translateZ(-${front})`,
-	`translateX(100%) rotateY(270deg) translateZ(${front})`,
-	`translateX(-100%) rotateY(90deg) translateZ(${front})`,
-	`rotateX(90deg) translateZ(${front})`,
-	` rotateX(270deg) translateZ(${front})`,
+	`translateX(${percent}) ${rY(degrees * 3)} translateZ(${front})`,
+	`translateX(-${percent}) ${rY(degrees)} translateZ(${front})`,
+	`${rX(degrees)} translateZ(${front})`,
+	` ${rX(degrees * 3)} translateZ(${front})`,
 	` translateZ(${front})`,
 ];
-const renderRubik = () => {
-	transforms.map((item) => {
-		const box = tag("box", "black");
+const renderRubik = (sidesArray, sideBoxesArray) => {
+	sidesArray.map(item => {
+		const box = tag('box', 'black');
 		box.style.transform = item;
-		const rubiks = rubik();
-		rubiks.forEach((rub) => box.append(rub));
-		flipper.append(box);
+		const rubiks = rubik(sideBoxesArray);
+		rubiks.forEach(rub => box.append(rub));
 
+		flipper.append(box);
 		return box;
 	});
 };
-renderRubik();
+renderRubik(transforms, bgs);
 
+main.append(container);
