@@ -26,29 +26,11 @@ const rubikCommands = [
 ];
 
 // ****************************************************
-const colors = [
-	'D3C1C3',
-	'E2D0BE',
-	'EEE5BF',
-	'E8F8C1',
-	'D1FFC6',
-	'3E4E50',
-	'FACFAD',
-	'F8BD7F',
-	'F5AC72',
-	'F2AA7E',
-	'D8D4F2',
-	'C4B2BC',
-	'A29587',
-	'846C5B',
-	'332E3C',
-	'ECC8AF',
-	'E7AD99',
-	'CE796B',
-	'C18C5D',
-	'495867',
-];
-const hex = colors.map(color => `#${color}`);
+
+const randomize = n => `#${Math.floor(Math.random() * n)}`;
+const createColors = element => {
+	element.style.backgroundColor = `${randomize(1000000)}`;
+};
 // ****************************************************
 
 const renderDropMenu = myArray => {
@@ -99,7 +81,7 @@ const createListElements = (item, i) => {
 		} else if (block === 'animation') {
 			flipper.classList.toggle(block + target);
 		} else if (target === 'bg-random') {
-			container.style.backgroundColor = hex[random(hex)];
+			createColors(container);
 		}
 	});
 

@@ -29,6 +29,7 @@ menuTabs.forEach(tab => {
 		switch (target) {
 			case 'rubik':
 				randomBackground(sideBlocks, mixedColors);
+
 				break;
 			case 'transparent':
 				toggleClass(sideBlocks, 'transparent');
