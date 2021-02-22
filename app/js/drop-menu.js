@@ -57,7 +57,7 @@ const createListElements = (item, i) => {
 		let target = e.target.getAttribute('data-title');
 		let block = title.getAttribute('data-title');
 		let upDownSideMoves = 50;
-		p(block, target);
+		// p(block, target);
 
 		if (block === 'rotate') {
 			flipper.style.transform += target;

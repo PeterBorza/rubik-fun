@@ -3,12 +3,12 @@ const sideBlocks = document.querySelectorAll('.box > div');
 const sides = document.querySelectorAll('.box');
 
 const rubikColors = [
-	'#009b48',
-	'#ffffff',
-	'#b71234',
-	'#ffd500',
-	'#0046ad',
-	'#ff5800',
+	'#0000FF',
+	'#FFFFFF',
+	'#FFFF00',
+	'#008000',
+	'rgb(230,125,60)',
+	'#FF0000',
 ];
 
 const finalColors = [];
