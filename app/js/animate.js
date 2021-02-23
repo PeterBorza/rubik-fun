@@ -17,7 +17,7 @@ new Array(sideBlockscount)
 	.fill()
 	.forEach(_ => finalColors.push(...rubikColors));
 
-const mixedColors = finalColors.sort((a, b) => 0.5 - Math.random());
+const mixedColors = finalColors.sort(() => 0.5 - Math.random());
 
 // **********************************************
 //  MAIN FUNCTION
